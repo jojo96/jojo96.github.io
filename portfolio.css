@@ -1,18 +1,22 @@
+/* ===== Base layout ===== */
 .page {
   min-height: 100vh;
   background: var(--bg-light);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 64px 16px;
+  padding: 96px 16px 16px; /* top padding to account for fixed header */
 }
 
 .header {
-  background: white;
-  border-bottom: 1px solid var(--border-soft);
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 10;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background: rgba(255, 255, 255, 0.85);  /* translucent */
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .header-inner {
@@ -41,6 +45,7 @@
   color: var(--primary);
 }
 
+/* ===== Hero ===== */
 .hero {
   max-width: 720px;
   margin: 64px auto 48px;
@@ -63,6 +68,7 @@
   color: var(--text-muted);
 }
 
+/* ===== Sections ===== */
 .section {
   width: 100%;
   max-width: 720px;
@@ -74,6 +80,15 @@
   margin-bottom: 16px;
 }
 
+/* ===== Cards ===== */
+.card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ===== Project grid ===== */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -112,22 +127,7 @@
   font-weight: 500;
 }
 
-.card {
-  background: var(--card);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  box-shadow: var(--shadow-soft);
-}
-
-.contact-card a {
-  color: var(--primary);
-  text-decoration: none;
-}
-
-.contact-card a:hover {
-  text-decoration: underline;
-}
-
+/* ===== Writing ===== */
 .writing-card {
   padding: 24px;
 }
@@ -164,10 +164,7 @@
   font-size: 13px;
 }
 
-.more-link a {
-  font-weight: 600;
-}
-
+/* ===== Publications ===== */
 .pubs-card {
   padding: 24px;
 }
@@ -193,6 +190,20 @@
   font-size: 13px;
 }
 
+/* ===== Skills ===== */
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.skills-list li {
+  line-height: 1.5;
+}
+
+/* ===== Links ===== */
 .more-pubs-link {
   display: inline-block;
   margin-top: 12px;
@@ -206,21 +217,16 @@
   text-decoration: underline;
 }
 
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-  margin-top: 12px;
+.contact-card a {
+  color: var(--primary);
+  text-decoration: none;
 }
 
-.image-grid img {
-  width: 100%;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-soft);
-  object-fit: cover;
+.contact-card a:hover {
+  text-decoration: underline;
 }
 
-/* Uniform image grid */
+/* ===== Image grids ===== */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -233,10 +239,8 @@
   height: 220px;
   object-fit: contain;
   background: #f6f6f6;
-}
-
-/* Subtle hover zoom for gallery images */
-.image-grid img {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: zoom-in;
 }
@@ -246,7 +250,31 @@
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
 }
 
-/* Lightbox (fullscreen image viewer) */
+/* ===== Desmos ===== */
+.desmos-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.desmos-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.desmos-link:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ===== Lightbox ===== */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -254,7 +282,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 100000;
   opacity: 1;
   transition: opacity 0.2s ease;
 }
@@ -281,41 +309,3 @@
   cursor: pointer;
   user-select: none;
 }
-
-.desmos-item {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
-}
-
-.desmos-link {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--primary);
-  text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(0,0,0,0.04);
-  transition: all 0.2s ease;
-}
-
-.desmos-link:hover {
-  background: rgba(0,0,0,0.08);
-  transform: translateY(-1px);
-}
-
-/* Sticky header */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: var(--bg-main);
-  backdrop-filter: blur(6px);
-}
-
-/* Optional: add subtle border when scrolling */
-.header {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
