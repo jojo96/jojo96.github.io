@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Graphics & Visualization – Ujjayanta Bhaumik</title>
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="portfolio.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="brand">Ujjayanta</div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#writing">Writing</a>
+          <a href="publications.html">Publications</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <h1>Graphics & Visualization</h1>
+        <p class="hero-sub">
+          Posters, illustrations, paintings, animations, and games.
+        </p>
+        <p class="hero-desc">
+          A small selection of visual and graphical work alongside my technical projects.
+        </p>
+      </section>
+
+      <!-- Gent Jazz Poster -->
+      <section class="section">
+        <h2>Poster Design – Gent Jazz Competition</h2>
+        <div class="card">
+          <p>
+  Poster designed for 
+  <a href="https://www.gentjazz.com/en/designcontest" target="_blank" rel="noopener">
+    Gent Jazz
+  </a> contest. 
+  Visual identity combining musical instruments and urban motifs.
+</p>
+          <div class="image-grid">
+            <img src="graphics/assets/gent-jazz-1.jpg" alt="Gent Jazz poster design 1" />
+            <img src="graphics/assets/gent-jazz-2.jpg" alt="Gent Jazz poster design 2" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Origami -->
+      <section class="section">
+        <h2>Origami</h2>
+        <div class="card">
+          <p>
+            Paper folding experiments and crafted models.
+            More on Instagram:
+            <a href="https://www.instagram.com/crafts_jojo" target="_blank">@crafts_jojo</a>
+          </p>
+          <div class="image-grid">
+            <img src="graphics/assets/or1.png" alt="Origami 1" />
+            <img src="graphics/assets/or2.png" alt="Origami 2" />
+            <img src="graphics/assets/or3.png" alt="Origami 3" />
+            <img src="graphics/assets/or4.png" alt="Origami 4" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Paintings -->
+      <section class="section">
+        <h2>Paintings</h2>
+        <div class="card">
+          <p>
+            Urban sketches and watercolor paintings inspired by travels and cityscapes.
+          </p>
+          <div class="image-grid">
+            <img src="graphics/assets/gent1.png" alt="Painting of Ghent 1" />
+            <img src="graphics/assets/gent2.png" alt="Painting of Ghent 2" />
+            <img src="graphics/assets/Montenegro.png" alt="Painting of Montenegro" />
+            <img src="graphics/assets/gent3.png" alt="Painting of Ghent 3" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Desmos -->
+      <section class="section">
+  <h2>Graphical Creations (Desmos)</h2>
+  <div class="card">
+    <p>
+      Mathematical and parametric drawings created using Desmos.
+    </p>
+
+    <div class="image-grid">
+      <div class="desmos-item">
+        <a href="https://www.desmos.com/calculator/bb1e8174b9" target="_blank">
+          <img src="graphics/assets/desmos1.png" alt="Pikachu Desmos visualization" />
+        </a>
+        <a class="desmos-link" href="https://www.desmos.com/calculator/bb1e8174b9" target="_blank">
+          View the Pikachu graph on Desmos →
+        </a>
+      </div>
+
+      <div class="desmos-item">
+        <a href="https://www.desmos.com/calculator/c45a47e0fb" target="_blank">
+          <img src="graphics/assets/desmos2.png" alt="Federer Desmos visualization" />
+        </a>
+        <a class="desmos-link" href="https://www.desmos.com/calculator/c45a47e0fb" target="_blank">
+          View the Federer graph on Desmos →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Animations -->
+<section class="section">
+  <h2>Animations</h2>
+  <div class="card">
+    <p>
+      Flipbook animations.
+    </p>
+    <div class="image-grid">
+      <img src="graphics/assets/flanders.gif" alt="Animation experiment 1" />
+      <!-- Add more GIFs or MP4 thumbnails if needed -->
+    </div>
+  </div>
+</section>
+
+ <!-- Games -->
+ <section class="section">
+   <h2>Games</h2>
+   <div class="card">
+     <p>
+       Game designed using Godot engine.
+     </p>
+     <div class="image-grid">
+       <img id="game-preview" src="graphics/assets/gameGif.gif" alt="Game preview" />
+       <video id="game-video" controls style="display: none;">
+         <source src="graphics/assets/GameRec.mp4" type="video/mp4">
+         Your browser does not support the video tag.
+       </video>
+     </div>
+     <button id="toggle-video" class="video-toggle-btn">Watch Gameplay Video</button>
+   </div>
+ </section>
+
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox hidden">
+      <span class="lightbox-close" id="lightboxClose">&times;</span>
+      <img id="lightboxImg" src="" alt="Fullscreen preview" />
+    </div>
+
+    <!-- Lightbox Script -->
+    <script>
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
+      const lightboxClose = document.getElementById("lightboxClose");
+
+      document.querySelectorAll(".image-grid img").forEach(img => {
+        img.addEventListener("click", () => {
+          lightboxImg.src = img.src;
+          lightbox.classList.remove("hidden");
+        });
+      });
+
+      lightboxClose.addEventListener("click", () => {
+        lightbox.classList.add("hidden");
+      });
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          lightbox.classList.add("hidden");
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          lightbox.classList.add("hidden");
+        }
+      });
+
+      // Video toggle functionality
+      const toggleBtn = document.getElementById("toggle-video");
+      const gamePreview = document.getElementById("game-preview");
+      const gameVideo = document.getElementById("game-video");
+
+      toggleBtn.addEventListener("click", () => {
+        if (gamePreview.style.display !== "none") {
+          gamePreview.style.display = "none";
+          gameVideo.style.display = "block";
+          toggleBtn.textContent = "Show GIF Preview";
+        } else {
+          gameVideo.style.display = "none";
+          gamePreview.style.display = "block";
+          toggleBtn.textContent = "Watch Gameplay Video";
+        }
+      });
+    </script>
+  </body>
+</html>
